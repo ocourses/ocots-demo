@@ -1,0 +1,51 @@
+name: Agent — correction conventions
+
+# Corrige une issue `conventions-style` (verdict déjà confirmé par
+# conventions-reviewer, jamais la sortie brute du détecteur) : applique le
+# remède documenté par ocots-conventions pour chaque point confirmé, et rien
+# d'autre. Un run = une issue + une branche + une PR Draft dédiées.
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Fichier .tex concerné par l'issue conventions-style"
+        required: true
+        type: string
+      issue:
+        description: "Numéro de l'issue conventions-style à corriger"
+        required: true
+        type: string
+      model:
+        description: "Modèle Albert (id exact)"
+        required: false
+        type: string
+        default: deepseek-v4-flash
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  run:
+    uses: ocourses/agents/.github/workflows/agent.yml@main
+    with:
+      role: conventions-fixer
+      title: "Correction conventions ${{ inputs.target }}"
+      model: ${{ inputs.model }}
+      link_issue: ${{ inputs.issue }}
+      task: >-
+        Corrige les points CONFIRMÉS de l'issue conventions-style
+        #${{ inputs.issue }} (fichier ${{ inputs.target }}) en suivant le rôle
+        conventions-fixer : relis l'issue (verdicts déjà rendus par
+        conventions-reviewer, pas la sortie brute du détecteur ; lignes
+        retrouvées par l'empreinte de son bloc JSON), applique le
+        remède documenté par ocots-conventions pour chaque règle citée,
+        uniquement sur les points confirmés — rien d'autre dans le fichier.
+        Un remède qui demande un choix d'auteur (ex. C2 entre deux formes
+        réellement équivalentes) : ne tranche pas, laisse la ligne en l'état
+        et signale-le dans le bilan.
+    secrets:
+      ALBERT_API_KEY: ${{ secrets.ALBERT_API_KEY }}
+      AGENTS_READ_TOKEN: ${{ secrets.AGENTS_READ_TOKEN }}

@@ -1,0 +1,43 @@
+\documentclass[9pt,t]{beamer}
+
+\usepackage[lang=fr, theme=ocots, math={analysis}, institution={n7}]{ocots}
+
+\title{Suites réelles}
+\author{ocourses}
+\date{2026--2027}
+
+\begin{document}
+
+\slidechapter{1}{Suites réelles}
+\slidetitlepage
+
+%------------------------------------------------------------------
+\begin{slide}{Convergence}
+
+Une suite converge si ses termes finissent par rester aussi près qu'on le
+veut d'un réel fixé.
+
+\begin{definition}[title=Suite convergente]
+    $(u_n)$ converge vers $\ell$ si
+    $\forall \varepsilon > 0,\ \exists N,\ \forall n \ge N,\ \abs{u_n - \ell} \le \varepsilon$.
+\end{definition}
+
+\begin{theorem}[title=Unicité]
+    La limite d'une suite convergente est unique.
+\end{theorem}
+
+\end{slide}
+
+%------------------------------------------------------------------
+\begin{slide}{Limite monotone}
+
+Pour une suite croissante, la borne supérieure fournit la limite sans
+qu'on ait à la deviner.
+
+\begin{theorem}[title=Limite monotone]
+    Toute suite croissante et majorée converge.
+\end{theorem}
+
+\end{slide}
+
+\end{document}

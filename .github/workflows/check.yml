@@ -1,0 +1,24 @@
+name: Check — conventions
+
+# Chaque lundi, `ocots-lint synchroniser` (via ocourses/agents, checker
+# conventions) ouvre ou met à jour une issue par fichier : `[conventions]`
+# pour le tri, `[nettoyer]` pour la voie mécanique. La file d'attente
+# d'ocourses/agents les traite ensuite (agent-review-conventions.yml,
+# agent-fix-conventions.yml, agent-nettoyer.yml).
+
+on:
+  schedule:
+    - cron: "13 6 * * 1" # tous les lundis ~6h UTC (décalé, cf. ocourses/agents/queue.yml)
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  conventions:
+    uses: ocourses/agents/.github/workflows/check.yml@main
+    with:
+      checker: conventions
+    secrets:
+      AGENTS_READ_TOKEN: ${{ secrets.AGENTS_READ_TOKEN }}

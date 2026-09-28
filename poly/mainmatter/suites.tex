@@ -1,0 +1,119 @@
+\chapter{Suites réelles}%
+\label{chap:suites}
+
+Ce chapitre rassemble les outils de base sur les suites réelles : la
+convergence, ses premières propriétés, et le théorème de la limite monotone,
+qui garantit l'existence d'une limite sans la calculer.
+
+\section{Convergence}%
+\label{sec:convergence}
+
+Pour dire qu'une suite s'approche d'un réel aussi près qu'on le veut, il
+faut quantifier « aussi près » et « à partir d'un certain rang ».
+
+\begin{definition}[title=Suite convergente, label=def:convergence]
+    Une suite réelle $(u_n)_{n \in \N}$ converge vers $\ell \in \R$ si
+    \[
+        \forall \varepsilon > 0,\ \exists N \in \N,\ \forall n \ge N,\quad
+        \abs{u_n - \ell} \le \varepsilon.
+    \]
+\end{definition}
+
+\begin{theorem}[title=Unicité de la limite, label=thm:unicite]
+    Si une suite converge, sa limite est unique.
+\end{theorem}
+
+\begin{proof}
+    Si $(u_n)$ converge vers $\ell$ et vers $\ell'$, pour tout
+    $\varepsilon > 0$ et $n$ assez grand, l'inégalité triangulaire donne
+    \[
+        \abs{\ell - \ell'} \le \abs{\ell - u_n} + \abs{u_n - \ell'} \le 2\varepsilon.
+    \]
+\end{proof}
+
+La convergence entraîne une première information, globale cette fois, sur
+la suite : elle ne peut pas partir à l'infini.
+
+\begin{proposition}[label=prop:bornee]
+    Toute suite convergente est bornée.
+\end{proposition}
+
+\begin{proof}
+    Avec $\varepsilon = 1$ dans la \cref{def:convergence}, on a
+    $\abs{u_n} \le \abs{\ell} + 1$ pour $n \ge N$, et il ne reste qu'un
+    nombre fini de termes à majorer. \qedhere
+\end{proof}
+
+La réciproque est fausse~: la suite $((-1)^n)$ est bornée et ne converge
+pas. On dit parfois qu'elle ``oscille''.
+
+\section{Opérations}%
+\label{sec:operations}
+
+Nous avons le théorème suivant.
+\begin{theorem}[title=Opérations sur les limites, label=thm:operations]
+    Si $u_n \to \ell$ et $v_n \to \ell'$, alors $u_n + v_n \to \ell + \ell'$
+    et $u_n v_n \to \ell \ell'$.
+\end{theorem}
+
+\begin{proof}
+    Pour le produit, on écrit
+    $u_n v_n - \ell \ell' = u_n (v_n - \ell') + \ell' (u_n - \ell)$ et on
+    utilise la \cref{prop:bornee}. \qedhere
+\end{proof}
+
+Considérons la suite définie par
+\[
+    u_n = \frac{1}{n + 1}, \qquad n \in \N.
+\]
+\begin{proposition}[label=prop:inverse]
+    La suite $(u_n)$ converge vers $0$.
+\end{proposition}
+
+\begin{proof}
+    Pour $\varepsilon > 0$, il suffit de prendre $N \ge 1/\varepsilon$. \qedhere
+\end{proof}
+
+\begin{remark}
+    La convergence ne dépend pas des premiers termes : modifier un nombre
+    fini de termes ne change ni la convergence ni la limite.
+\end{remark}
+\begin{remark}
+    La définition s'étend aux suites complexes, en remplaçant la valeur
+    absolue par le module.
+\end{remark}
+\begin{remark}
+    Le rang $N$ dépend en général de $\varepsilon$ ; il est d'usage de
+    l'écrire $N_\varepsilon$ quand on veut le souligner.
+\end{remark}
+\begin{remark}
+    Une suite stationnaire converge vers sa valeur finale.
+\end{remark}
+
+\section{Suites monotones}%
+\label{sec:monotones}
+
+Le théorème suivant repose sur la propriété de la borne supérieure : c'est
+lui qui fournit une limite sans avoir à la deviner.
+
+\begin{definition}[title=Suite croissante, label=def:croissante]
+    Une suite $(u_n)$ est croissante si $u_n \le u_{n+1}$ pour tout $n$.
+\end{definition}
+
+\begin{theorem}[title=Limite monotone, label=thm:monotone]
+    Toute suite croissante et majorée converge vers la borne supérieure de
+    ses termes.
+\end{theorem}
+
+\begin{proof}
+    Soit $\ell = \sup_n u_n$. Pour $\varepsilon > 0$, il existe $N$ tel que
+    $u_N > \ell - \varepsilon$, et la croissance donne pour $n \ge N$
+    \[
+        \ell - \varepsilon < u_N \le u_n \le \ell.
+    \]
+\end{proof}
+
+D'après le théorème~\ref{thm:monotone}, la suite définie par
+$u_{n+1} = \sqrt{2 + u_n}$, $u_0 = 0$, converge : elle est croissante et
+majorée par $2$. Toute sous suite d'une suite convergente converge vers la
+même limite.

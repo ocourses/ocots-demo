@@ -1,0 +1,33 @@
+name: Agent — nettoyage mécanique (sans modèle)
+
+# Corrige une issue `[nettoyer] <fichier>` (label conventions-mecanique,
+# ouverte par `ocots-lint synchroniser`) : `ocots-lint nettoyer` applique les
+# corrections à équivalence vérifiée et ouvre (ou met à jour) une PR Draft
+# sur la branche ocots-lint/nettoyer/<fichier>. AUCUN modèle, aucun budget
+# Albert. Déclenché par la file d'attente d'ocourses/agents (ou à la main).
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Fichier .tex concerné (ex. td/td1/td1.tex)"
+        required: true
+        type: string
+      issue:
+        description: "Numéro de l'issue [nettoyer]"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  run:
+    uses: ocourses/agents/.github/workflows/nettoyer.yml@main
+    with:
+      target: ${{ inputs.target }}
+      issue: ${{ inputs.issue }}
+    secrets:
+      AGENTS_READ_TOKEN: ${{ secrets.AGENTS_READ_TOKEN }}

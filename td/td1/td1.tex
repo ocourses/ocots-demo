@@ -1,0 +1,47 @@
+\documentclass[11pt]{ocots-td}
+
+\usepackage[lang=fr, theme=ocots, solutions=none,
+            math={analysis}, institution={n7}]{ocots}
+
+\title{TD 1 --- Suites réelles}
+\shorttitle{TD 1 --- Suites réelles}
+\numero{TD~1}
+\date{2026--2027}
+\discipline{Suites réelles (cours de démonstration)}
+\promotion{ocourses}
+
+\begin{document}
+
+\maketitle
+
+\section{Convergence}
+
+\begin{exercise}[label=ex:definition]
+    Montrer à l'aide de la définition que la suite $u_n = \frac{2n + 1}{n + 3}$
+    converge, et préciser sa limite.
+\end{exercise}
+
+\begin{exercise}[label=ex:oscillante]
+    On pose $u_n = (-1)^n$. Question préliminaire~: la suite est-elle bornée ?
+    \begin{question}
+        Montrer que $(u_n)$ ne converge pas.
+    \end{question}
+    \begin{question}
+        Exhiber deux sous-suites convergentes de limites différentes.
+    \end{question}
+\end{exercise}
+
+\section{Suites monotones}
+
+\begin{exercise}[label=ex:recurrente]
+    On définit $u_0 = 0$ et $u_{n+1} = \sqrt{2 + u_n}$. Indication~: raisonner
+    par récurrence.
+    \begin{question}
+        Montrer que $0 \le u_n \le 2$ pour tout $n$.
+    \end{question}
+    \begin{question}
+        Montrer que $(u_n)$ est croissante, puis qu'elle converge vers $2$.
+    \end{question}
+\end{exercise}
+
+\end{document}

@@ -1,0 +1,16 @@
+name: Conventions (PR)
+
+# Sur une PR : seulement les trouvailles NOUVELLES par rapport à la base
+# (par empreinte), en annotations. Version d'ocots-lint : celle qu'épinglent
+# les conventions (conventions/bin/ocots-lint).
+
+on:
+  pull_request:
+    paths: ["**.tex"]
+
+permissions:
+  contents: read
+
+jobs:
+  conventions:
+    uses: ocourses/ocots-lint/.github/workflows/verifier-pr.yml@v0.4.0

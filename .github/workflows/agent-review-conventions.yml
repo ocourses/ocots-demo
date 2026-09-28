@@ -1,0 +1,60 @@
+name: Agent — triage conventions
+
+# Relit un candidat `conventions-candidate` (issue ouverte par
+# `ocots-lint synchroniser`, sortie brute de l'outil) et décide : confirme
+# (label conventions-style, reste ouverte pour action humaine) ou rejette
+# (ferme, avec le motif par trouvaille). Ne modifie JAMAIS le contenu du
+# cours : sa seule écriture est une exemption posée par `ocots-lint
+# exempter` pour chaque rejet, contrôlée par agent.yml (rôle
+# conventions-reviewer).
+#
+# Un run = une branche + une PR Draft dédiées (mécanique standard de la base
+# d'agents) : le fichier de suivi, et les exemptions s'il y en a — les
+# fusionner clôt les rejets pour de bon.
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Fichier .tex concerné par le candidat (ex. poly/main.tex)"
+        required: true
+        type: string
+      issue:
+        description: "Numéro de l'issue candidate (conventions-candidate) à trier"
+        required: true
+        type: string
+      model:
+        description: "Modèle Albert (id exact)"
+        required: false
+        type: string
+        default: deepseek-v4-flash
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  run:
+    uses: ocourses/agents/.github/workflows/agent.yml@main
+    with:
+      role: conventions-reviewer
+      title: "Triage conventions ${{ inputs.target }} (#${{ inputs.issue }})"
+      model: ${{ inputs.model }}
+      link_issue: ${{ inputs.issue }}
+      close_on_merge: "false"
+      task: >-
+        Trie le candidat conventions ouvert dans l'issue
+        #${{ inputs.issue }} (fichier ${{ inputs.target }}) en suivant le
+        rôle conventions-reviewer : retrouve chaque trouvaille par son
+        empreinte (bloc JSON de l'issue), relis le fichier autour, décide
+        confirmée / faux positif / exception légitime, consigne chaque rejet
+        par ocots-lint exempter, puis modifie CETTE issue (jamais une
+        nouvelle) — ferme-la avec le motif de chaque rejet si rien n'est
+        confirmé, ou réécris son corps (points confirmés et leur bloc JSON)
+        et remplace le label conventions-candidate par conventions-style si
+        au moins un point est confirmé. Ne modifie aucun fichier du dépôt,
+        sauf les exemptions posées par ocots-lint exempter.
+    secrets:
+      ALBERT_API_KEY: ${{ secrets.ALBERT_API_KEY }}
+      AGENTS_READ_TOKEN: ${{ secrets.AGENTS_READ_TOKEN }}

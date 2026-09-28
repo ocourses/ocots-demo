@@ -1,0 +1,28 @@
+name: Compilation LaTeX (PR)
+
+# Compile les documents .tex touchés par une PR (directement ou via un
+# \input), poste le résultat en commentaire, joint les PDF en artefact.
+# Ne tourne que sur les PR non-Draft : une PR d'agent reste en Draft
+# pendant le travail ; tu la passes en « Ready for review » quand le diff
+# te va → la compilation se lance alors (et à chaque push suivant).
+
+on:
+  pull_request:
+    types: [synchronize, ready_for_review, reopened]
+    paths:
+      - "**/*.tex"
+      - "**/*.sty"
+      - "**/*.cls"
+      - "**/.latexmkrc"
+      - ".gitmodules"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  compile:
+    if: github.event.pull_request.draft == false
+    uses: ocourses/agents/.github/workflows/latex-pr.yml@main
+    secrets:
+      AGENTS_READ_TOKEN: ${{ secrets.AGENTS_READ_TOKEN }}
