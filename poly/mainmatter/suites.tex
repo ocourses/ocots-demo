@@ -19,6 +19,9 @@ faut quantifier « aussi près » et « à partir d'un certain rang ».
     \]
 \end{definition}
 
+Cette limite, quand elle existe, ne laisse aucune place à l'ambiguïté : une
+suite ne s'approche que d'un seul réel.
+
 \begin{theorem}[title=Unicité de la limite, label=thm:unicite]
     Si une suite converge, sa limite est unique.
 \end{theorem}
@@ -27,7 +30,7 @@ faut quantifier « aussi près » et « à partir d'un certain rang ».
     Si $(u_n)$ converge vers $\ell$ et vers $\ell'$, pour tout
     $\varepsilon > 0$ et $n$ assez grand, l'inégalité triangulaire donne
     \[
-        \abs{\ell - \ell'} \le \abs{\ell - u_n} + \abs{u_n - \ell'} \le 2\varepsilon.
+        \abs{\ell - \ell'} \le \abs{\ell - u_n} + \abs{u_n - \ell'} \le 2\varepsilon. \qedhere
     \]
 \end{proof}
 
@@ -50,7 +53,8 @@ pas. On dit parfois qu'elle ``oscille''.
 \section{Opérations}%
 \label{sec:operations}
 
-Nous avons le théorème suivant.
+Les limites se comportent bien avec les opérations usuelles : additionner ou
+multiplier deux suites convergentes revient à le faire sur leurs limites.
 \begin{theorem}[title=Opérations sur les limites, label=thm:operations]
     Si $u_n \to \ell$ et $v_n \to \ell'$, alors $u_n + v_n \to \ell + \ell'$
     et $u_n v_n \to \ell \ell'$.
@@ -102,6 +106,10 @@ lui qui fournit une limite sans avoir à la deviner.
     Une suite $(u_n)$ est croissante si $u_n \le u_{n+1}$ pour tout $n$.
 \end{definition}
 
+Une suite qui ne fait que croître sans dépasser un plafond se resserre
+inévitablement sur sa borne supérieure : c'est ce que garantit le résultat
+suivant.
+
 \begin{theorem}[title=Limite monotone, label=thm:monotone]
     Toute suite croissante et majorée converge vers la borne supérieure de
     ses termes.
@@ -111,11 +119,11 @@ lui qui fournit une limite sans avoir à la deviner.
     Soit $\ell = \sup_n u_n$. Pour $\varepsilon > 0$, il existe $N$ tel que
     $u_N > \ell - \varepsilon$, et la croissance donne pour $n \ge N$
     \[
-        \ell - \varepsilon < u_N \le u_n \le \ell.
+        \ell - \varepsilon < u_N \le u_n \le \ell. \qedhere
     \]
 \end{proof}
 
-D'après le théorème~\ref{thm:monotone}, la suite définie par
+D'après le Théorème~\ref{thm:monotone}, la suite définie par
 $u_{n+1} = \sqrt{2 + u_n}$, $u_0 = 0$, converge : elle est croissante et
-majorée par $2$. Toute sous suite d'une suite convergente converge vers la
+majorée par $2$. Toute sous-suite d'une suite convergente converge vers la
 même limite.
