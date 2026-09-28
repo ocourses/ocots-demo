@@ -39,12 +39,38 @@ _Détecté par `ocots-lint synchroniser`._
 
 ## Plan
 
-_À rédiger par l'agent : liste d'étapes cochables._
+- [x] Relire l'issue et son bloc JSON; retrouver les empreintes avec `ocots-lint verifier`
+- [x] Relire le fichier autour de chaque trouvaille et consulter les conventions (P2, P3, P5, C4, C6)
+- [x] Décider chaque trouvaille (confirmée / faux positif / exception légitime)
+- [x] Poser les exemptions pour les rejets avec `ocots-lint exempter`
+- [x] Commit `chore(conventions)` des exemptions
+- [x] Mettre à jour l'issue #1 (points confirmés + bloc JSON réduit + label conventions-style) ou la fermer
+- [x] Compléter le fichier de suivi (journal + bilan) et commit final
 
 ## Journal
 
 - 2026-09-28T20:13:41Z — chantier initialisé (issue #1, branche, PR Draft)
+- 2026-09-28T20:2X:00Z — 9 trouvailles reçues, toutes retrouvées dans `verifier` actuel (aucune disparue)
+- 2026-09-28T20:2X:00Z — 7 confirmées, 2 rejetées (exemption P3 et P5) ; commit `91830b9`
+- 2026-09-28T20:2X:00Z — issue #1 réécrite (points confirmés + bloc JSON réduit), label `conventions-style`, ouverte
 
 ## Bilan
 
-_À rédiger par l'agent en fin de run._
+**Trouvailles** : 9 reçues (toutes retrouvées, aucune disparue) → **7 confirmées**, **2 rejetées** (dont 2 exemptées).
+
+**Confirmées** :
+- P2 (l. 20) et P2 (l. ~103) — `definition` → `theorem` sans texte de liaison entre les boîtes.
+- C6 (l. 32) et C6 (l. ~116) — preuves finies par une équation hors texte sans `\qedhere`.
+- P3 (l. 54) — amorce passe-partout « Nous avons le théorème suivant. » comme phrase entière.
+- C4 (l. 118) — renvoi en bas de casse « le théorème~\ref{thm:monotone} ».
+- C4 (l. 120) — mot composé « sous suite » (→ « sous-suite »).
+
+**Rejetées / exemptées** :
+- P3 (l. ~70) — « Considérons la suite définie par » est complétée par l'équation hors texte : la phrase ne se jette pas dans la boîte (faux positif).
+- P5 (l. ~79) — quatre remarques d'affilée, toutes réellement optionnelles et indépendantes (exception légitime P5).
+
+**Issue #1** : au moins un point confirmé → corps réécrit (7 points, chacun avec règle/ligne/justification), bloc JSON recopié réduit aux 7 entrées confirmées, label `conventions-candidate` → `conventions-style`, issue laissée **ouverte**.
+
+**Diff** : uniquement deux lignes `% ocots-lint: ignore …` posées par `ocots-lint exempter` (contrôlé par `exempter --controler`, 0 problème). Aucune modification de contenu du cours.
+
+**À vérifier à la main** : rien côté rendu (aucune modification de contenu) ; la relecture par un humain des exemptions posées, avant fusion de la PR.
