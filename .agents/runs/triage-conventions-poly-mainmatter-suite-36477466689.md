@@ -74,3 +74,5 @@ _Détecté par `ocots-lint synchroniser`._
 **Diff** : uniquement deux lignes `% ocots-lint: ignore …` posées par `ocots-lint exempter` (contrôlé par `exempter --controler`, 0 problème). Aucune modification de contenu du cours.
 
 **À vérifier à la main** : rien côté rendu (aucune modification de contenu) ; la relecture par un humain des exemptions posées, avant fusion de la PR.
+
+- 2026-09-28T20:16:21Z — run terminé (https://github.com/ocourses/ocots-demo/actions/runs/36477466689)
