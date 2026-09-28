@@ -76,3 +76,5 @@ identique. L'empreinte P2 `28b1a9332f45abaa:0` n'apparaît plus dans
   généré par la CI : numérotation des boîtes et titres corrects à l'affichage.
 
 Tous les points de l'issue sont corrigés.
+
+- 2026-09-28T20:31:12Z — run terminé (https://github.com/ocourses/ocots-demo/actions/runs/36479269348)
