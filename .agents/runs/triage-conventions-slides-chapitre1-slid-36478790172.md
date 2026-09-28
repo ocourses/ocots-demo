@@ -52,3 +52,5 @@ _Détecté par `ocots-lint synchroniser`._
 - **En plus du signal brut :** justification adaptée au support `slides` (remede par découpage de diapositives, conformément à SL3/SL4).
 - **Issue #2 :** corps réécrit (point confirmé + bloc JSON réduit à la seule entrée confirmée), label `conventions-candidate` → `conventions-style`, laissée **ouverte** pour le rôle de correction.
 - **À vérifier à la main :** contenu du fichier cours inchangé (aucune écriture, pas d'exemption posée — la trouvaille étant confirmée). Le correcteur devra scinder la diapositive `Convergence` en deux diapositives titrées.
+
+- 2026-09-28T20:25:45Z — run terminé (https://github.com/ocourses/ocots-demo/actions/runs/36478790172)
