@@ -22,3 +22,10 @@ jobs:
       checker: conventions
     secrets:
       AGENTS_READ_TOKEN: ${{ secrets.AGENTS_READ_TOKEN }}
+
+  versions:
+    uses: ocourses/agents/.github/workflows/check.yml@main
+    with:
+      checker: versions
+    secrets:
+      AGENTS_READ_TOKEN: ${{ secrets.AGENTS_READ_TOKEN }}
