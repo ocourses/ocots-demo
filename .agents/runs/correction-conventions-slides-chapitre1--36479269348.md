@@ -31,12 +31,48 @@ Dans `slide{Convergence}`, la boîte `definition` (Suite convergente), ligne 20,
 
 ## Plan
 
-_À rédiger par l'agent : liste d'étapes cochables._
+- [x] 0. Compilation de référence : `latex-compile slides/chapitre1/slides_chapitre_1.tex` avant tout diff
+- [x] 1. Localiser le point P2 (empreinte `28b1a9332f45abaa:0`) via `ocots-lint verifier`
+- [x] 2. Lire le remède documenté (SL3/SL4 slides, P2) : scinder chaque boîte sur sa propre diapositive titrée
+- [x] 3. Appliquer le correctif : séparer `slide{Convergence}` (définition) et nouvelle `slide{Unicité}` (théorème)
+- [x] 4. Vérifier `git diff` : seul le point traité change, empreinte disparue
+- [x] 5. Recompiler `latex-compile` et vérifier `git status` (PDF rendu restauré si besoin)
+- [x] 6. Bilan dans ce fichier + commit
 
 ## Journal
 
 - 2026-09-28T20:29:25Z — chantier initialisé (issue #2, branche, PR Draft)
+- 2026-09-28T20:30:16Z — étape 0 : compilation de référence OK ; étape 1 : empreinte P2 `28b1a9332f45abaa:0` localisée ligne 23 (definition → theorem sous `slide{Convergence}`)
+- 2026-09-28T20:31Z — étapes 2-4 : remède P2/SL3 appliqué (scission en deux diapositives titrées), empreinte disparue ; étapes 5-6 : recompilation OK, `git status` propre (aucun PDF suivi modifié)
 
 ## Bilan
 
-_À rédiger par l'agent en fin de run._
+### Point corrigé
+
+**P2 — enchaînement `definition` → `theorem` sans texte entre elles** (ligne 23, support `slides`).
+
+Le point confirmé de l'issue #2 a été traité selon le remède documenté : sur un
+support `slides`, [SL4](conventions/slides.md) ne tolère pas deux boîtes collées
+sous un même `slide{titre}`, et [SL3](conventions/slides.md) (« une idée par
+diapositive ») prescrit de scinder chaque boîte sur sa propre diapositive
+titrée — pas d'y ajouter une phrase de liaison.
+
+Modification apportée dans `slides/chapitre1/slides_chapitre_1.tex` :
+- la boîte `definition` **(Suite convergente)** reste sur `slide{Convergence}` ;
+- la boîte `theorem` **(Unicité)** a été déplacée sur une nouvelle
+  `slide{Unicité}`, dans le même style que la diapositive voisine `Limite
+  monotone`.
+
+Seules les lignes visées par l'issue ont changé ; le reste du fichier est
+identique. L'empreinte P2 `28b1a9332f45abaa:0` n'apparaît plus dans
+`ocots-lint verifier` (aucune infraction P2 restante). La recompilation
+`latex-compile slides/chapitre1/slides_chapitre_1.tex` passe (elle passait déjà
+à l'étape 0) et aucun fichier suivi par git n'a été modifié en dehors du
+`.tex` corrigé (pas de PDF rendu pollué).
+
+### reste à vérifier à la main
+
+- Rendu visuel des deux diapositives (`Convergence` / `Unicité`) dans le PDF
+  généré par la CI : numérotation des boîtes et titres corrects à l'affichage.
+
+Tous les points de l'issue sont corrigés.
