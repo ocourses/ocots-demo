@@ -39,4 +39,4 @@ cd ocots-demo/poly && latexmk -pdf main.tex            # idem td/td1, slides/cha
 | Sous-module | Version |
 |---|---|
 | `template` | `v1.1.0` |
-| `conventions` | `v2.3.0` (ocots-lint `v0.4.0`) |
+| `conventions` | `v2.3.1` (ocots-lint `v0.4.1`) |
