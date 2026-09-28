@@ -31,12 +31,24 @@ _Détecté par `ocots-lint synchroniser`._
 
 ## Plan
 
-_À rédiger par l'agent : liste d'étapes cochables._
+- [x] Lire l'issue #2 et son bloc JSON (empreinte, règle, ligne, garantie)
+- [x] Retrouver la trouvaille par empreinte et relire le fichier autour
+- [x] Trancher la trouvaille P2 (`definition -> theorem`)
+- [x] Réécrire l'issue #2 (points confirmés + bloc JSON) et changer le label
+- [x] Rédiger le bilan
 
 ## Journal
 
 - 2026-09-28T20:24:36Z — chantier initialisé (issue #2, branche, PR Draft)
+- 2026-09-28T21:00:00Z — `ocots-lint verifier` : empreinte `28b1a9332f45abaa:0` (P2) encore active, ligne 23. Relecture du fichier : `definition` → `theorem` collées sous le même `slide{Convergence}` sans `\pause` ni texte entre elles.
+- 2026-09-28T21:00:00Z — décision : **confirmée**. Sur `slides`, SL4 remplace la liaison par le titre de diapo mais ne documente aucune exception pour deux boîtes sous un même `slide{titre}`. Issue réécrite (`conventions-style`), restaurée ouverte ; pas d'exemption (rien de rejeté), pas de modification du fichier cours.
 
 ## Bilan
 
-_À rédiger par l'agent en fin de run._
+- **Trouvailles reçues :** 1 (P2, `definition -> theorem`, ligne 23).
+- **Confirmées :** 1. `definition` (Suite convergente) et `theorem` (Unicité) sont deux boîtes indépendantes, directement accolées sous le même `slide{Convergence}`, sans `\pause` ni liaison. En support `slides`, SL4 ne documente aucune exception pour une chaîne sous un même `slide{titre}` : la chaîne reste une infraction P2. Le remède attendu est de scinder chaque boîte sur sa propre diapositive titrée (cohérent avec SL3), pas d'ajouter une phrase de liaison (hors idiome SL4).
+- **Rejetées / exemptées :** aucune (rien à consigner par `ocots-lint exempter`).
+- **Disparues :** aucune.
+- **En plus du signal brut :** justification adaptée au support `slides` (remede par découpage de diapositives, conformément à SL3/SL4).
+- **Issue #2 :** corps réécrit (point confirmé + bloc JSON réduit à la seule entrée confirmée), label `conventions-candidate` → `conventions-style`, laissée **ouverte** pour le rôle de correction.
+- **À vérifier à la main :** contenu du fichier cours inchangé (aucune écriture, pas d'exemption posée — la trouvaille étant confirmée). Le correcteur devra scinder la diapositive `Convergence` en deux diapositives titrées.
