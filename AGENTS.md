@@ -22,16 +22,10 @@
 
 ## Vérifications
 
-Après chaque salve de modifications :
-
-- compiler le document avec `latexmk` ;
-- vérifier l'absence de références non résolues et de labels dupliqués ;
-- lancer `./conventions/bin/verifier` sur le périmètre concerné (relais vers
-  [`ocots-lint`](https://github.com/ocourses/ocots-lint), nécessite `uv`) ;
-- relire le diff et conserver uniquement les changements demandés ;
-- ne pas ajouter les artefacts de compilation (`*.aux`, `build/`, etc.).
-
-Les résultats mécaniques du vérificateur sont des signaux : ils ne remplacent pas la relecture humaine.
+Après chaque salve : suivre
+[`conventions/methode.md`, « La vérification suit chaque salve »](conventions/methode.md#la-vérification-suit-chaque-salve).
+La procédure est celle de la version épinglée des conventions ; elle n'est
+pas recopiée ici.
 
 ## Méthode de travail
 
