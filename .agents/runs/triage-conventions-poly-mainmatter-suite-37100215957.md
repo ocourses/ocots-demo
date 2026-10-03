@@ -38,12 +38,29 @@ _Détecté par `ocots-lint synchroniser`._
 
 ## Plan
 
-_À rédiger par l'agent : liste d'étapes cochables._
+- [x] Lire l'issue #19 et son bloc JSON (8 trouvailles C5)
+- [x] Retrouver chaque trouvaille par empreinte (ocots-lint verifier)
+- [x] Relire le fichier autour de chaque trouvaille
+- [x] Trancher (confirmée / faux positif / exception légitime)
+- [x] Modifier l'issue #19 (corps réécrit + label conventions-style)
+- [x] Rédiger le bilan
 
 ## Journal
 
 - 2026-10-03T05:36:03Z — chantier initialisé (issue #19, branche, PR Draft)
+- 2026-10-03 — les 8 empreintes C5 sont toutes présentes et actives ; aucune n'est exemptée.
+- 2026-10-03 — greps : les 8 labels (chap:suites, sec:convergence, thm:unicite, sec:operations, thm:operations, prop:inverse, sec:monotones, def:croissante) ne sont cités nulle part dans le cours (`\ref`/`\cref`). Seuls def:convergence, prop:bornee, thm:monotone sont effectivement référencés.
+- 2026-10-03 — verdict : les 8 trouvailles C5 sont confirmées (labels posés « au cas où », jamais cités) → issue transformée en constat vérifié, pas d'exemption.
 
 ## Bilan
 
-_À rédiger par l'agent en fin de run._
+- **Trouvailles reçues** : 8 (toutes C5, garantie « heuristique », voie « tri »).
+- **Confirmées : 8** (chap:suites, sec:convergence, thm:unicite, sec:operations, thm:operations, prop:inverse, sec:monotones, def:croissante). Vérifié au `grep` sur tout `*.tex` : aucun de ces labels n'est cité par `\ref`/`\cref`/`\autoref` ; seuls def:convergence, prop:bornee, thm:monotone sont réellement référencés dans `suites.tex` (l. 45, 66, 125).
+- **Rejetées / exemptées : 0** — aucune fausse positive, aucune exception légitime (C5 n'en prévoit pas pour les labels posés « au cas où »).
+- **Disparues : 0** — les 8 empreintes de l'issue sont toutes actives à l'identique (numéros de ligne inchangés).
+- **Motif dominant** : labels posés sans jamais être cités, contrairement à `communes.md#c5`.
+- **En plus du signal brut** : rien — le signal rendait déjà compte de toutes les infractions C5 du fichier.
+
+**Issue #19** : au moins un point confirmé → corps réécrit (8 points confirmés + bloc JSON réduit aux entrées confirmées, champs inchangés), label `conventions-candidate` retiré, `conventions-style` ajouté, laissée **ouverte** pour le rôle de correction. Aucune exemption posée (rien de rejeté). Aucun fichier du dépôt modifié ; l'exemption P5 préexistante (l. 81) n'a pas été touchée.
+
+**Reste à vérifier à la main** : après la suppression des labels par le rôle de correction, recompilation du poly pour s'assurer d'aucun `??` (les références restantes def:convergence, prop:bornee, thm:monotone devront être conservées).
