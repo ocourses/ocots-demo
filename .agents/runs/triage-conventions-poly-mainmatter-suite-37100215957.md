@@ -64,3 +64,5 @@ _Détecté par `ocots-lint synchroniser`._
 **Issue #19** : au moins un point confirmé → corps réécrit (8 points confirmés + bloc JSON réduit aux entrées confirmées, champs inchangés), label `conventions-candidate` retiré, `conventions-style` ajouté, laissée **ouverte** pour le rôle de correction. Aucune exemption posée (rien de rejeté). Aucun fichier du dépôt modifié ; l'exemption P5 préexistante (l. 81) n'a pas été touchée.
 
 **Reste à vérifier à la main** : après la suppression des labels par le rôle de correction, recompilation du poly pour s'assurer d'aucun `??` (les références restantes def:convergence, prop:bornee, thm:monotone devront être conservées).
+
+- 2026-10-03T05:36:57Z — run terminé (https://github.com/ocourses/ocots-demo/actions/runs/37100215957)
