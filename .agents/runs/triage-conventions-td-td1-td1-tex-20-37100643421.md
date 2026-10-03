@@ -61,3 +61,5 @@ Issue #20 : corps réécrit avec les trois points confirmés (règle, ligne actu
 
 Rien d'autre remarqué en relisant (pas de règle non outillée pertinente).
 
+
+- 2026-10-03T05:43:48Z — run terminé (https://github.com/ocourses/ocots-demo/actions/runs/37100643421)
