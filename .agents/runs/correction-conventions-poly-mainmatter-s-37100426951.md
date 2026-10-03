@@ -40,11 +40,23 @@ _Détecté par `ocots-lint synchroniser`._
 
 ## Plan
 
-_À rédiger par l'agent : liste d'étapes cochables._
+- [x] Compiler `suites.tex` en l'état (référence, étape 0)
+- [x] Retirer `label{chap:suites}` (l.2, C5)
+- [x] Retirer `label{sec:convergence}` (l.9, C5)
+- [x] Retirer `label{thm:unicite}` (l.25, C5)
+- [x] Retirer `label{sec:operations}` (l.54, C5)
+- [x] Retirer `label{thm:operations}` (l.58, C5)
+- [x] Retirer `label{prop:inverse}` (l.73, C5)
+- [x] Retirer `label{sec:monotones}` (l.99, C5)
+- [x] Retirer `label{def:croissante}` (l.104, C5)
+- [x] Vérifier `git diff` (seuls les 8 labelless retirés) + verifier C5 sur `suites.tex`
+- [ ] Recompiler en fin de run, restaurer tout PDF suivi, rédiger le bilan
 
 ## Journal
 
 - 2026-10-03T05:39:10Z — chantier initialisé (issue #19, branche, PR Draft)
+- 2026-10-03 — étape 0 : `latex-compile suites.tex` échoue (« Undefined control sequence \chapter », fichier fragment non pilote, comportement attendu hors chaîne)
+- 2026-10-03 — les 8 labels confirmés retirés ; `ocots-lint verifier C5` repasse à 0 infraction(s)
 
 ## Bilan
 
