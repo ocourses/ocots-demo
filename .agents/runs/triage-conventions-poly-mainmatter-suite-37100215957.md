@@ -1,0 +1,68 @@
+# Suivi — Triage conventions poly/mainmatter/suites.tex (#19)
+
+| Champ | Valeur |
+|-------|--------|
+| Rôle | `conventions-reviewer` |
+| Issue | #19 |
+| Branche | `agent/triage-conventions-poly-mainmatter-suite-37100215957` |
+| Modèle | `deepseek-v4-flash` |
+| Run | https://github.com/ocourses/ocots-demo/actions/runs/37100215957 |
+| Démarré | 2026-10-03T05:36:03Z |
+
+## Tâche
+
+Trie le candidat conventions ouvert dans l'issue #19 (fichier poly/mainmatter/suites.tex) en suivant le rôle conventions-reviewer : retrouve chaque trouvaille par son empreinte (bloc JSON de l'issue), relis le fichier autour, décide confirmée / faux positif / exception légitime, consigne chaque rejet par ocots-lint exempter, puis modifie CETTE issue (jamais une nouvelle) — ferme-la avec le motif de chaque rejet si rien n'est confirmé, ou réécris son corps (points confirmés et leur bloc JSON) et remplace le label conventions-candidate par conventions-style si au moins un point est confirmé. Ne modifie aucun fichier du dépôt, sauf les exemptions posées par ocots-lint exempter.
+
+---
+
+**Contenu de l'issue liée #19 :**
+
+**⚠️ Candidat brut, pas relu.** Sortie de `ocots-lint verifier` (ocots-lint 0.7.0, conventions v2.6.0) — *un signal, pas un verdict*. L'outil rate des choses et signale parfois du correct ; zéro trouvaille ne veut pas dire règle respectée ([garanties](https://github.com/ocourses/ocots-lint#ce-que-loutil-garantit--et-ce-quil-ne-garantit-pas)).
+
+**Ne pas agir sans relecture.** Un agent (`conventions-reviewer`) tranche — confirmée → `conventions-style` ; rejetée → exemption posée par `ocots-lint exempter`, pour qu'elle ne revienne pas. Les corrections mécaniques du fichier ont leur propre issue (`[nettoyer] poly/mainmatter/suites.tex`).
+
+| Ligne | Règle | Garantie | Voie | Message |
+|---|---|---|---|---|
+| 2 | C5 | heuristique | tri | label chap:suites jamais cité dans le cours — à retirer tant qu'aucun renvoi n'en a besoin |
+| 9 | C5 | heuristique | tri | label sec:convergence jamais cité dans le cours — à retirer tant qu'aucun renvoi n'en a besoin |
+| 25 | C5 | heuristique | tri | label thm:unicite jamais cité dans le cours — à retirer tant qu'aucun renvoi n'en a besoin |
+| 54 | C5 | heuristique | tri | label sec:operations jamais cité dans le cours — à retirer tant qu'aucun renvoi n'en a besoin |
+| 58 | C5 | heuristique | tri | label thm:operations jamais cité dans le cours — à retirer tant qu'aucun renvoi n'en a besoin |
+| 73 | C5 | heuristique | tri | label prop:inverse jamais cité dans le cours — à retirer tant qu'aucun renvoi n'en a besoin |
+| 99 | C5 | heuristique | tri | label sec:monotones jamais cité dans le cours — à retirer tant qu'aucun renvoi n'en a besoin |
+| 104 | C5 | heuristique | tri | label def:croissante jamais cité dans le cours — à retirer tant qu'aucun renvoi n'en a besoin |
+
+---
+_Détecté par `ocots-lint synchroniser`._
+<!-- ocots-lint {"schema": 1, "fichier": "poly/mainmatter/suites.tex", "trouvailles": [{"empreinte": "c6a7575667ee0890:0", "regle": "C5", "ligne": 2, "garantie": "heuristique", "voie": "tri"}, {"empreinte": "d0d0b5089d1706d9:0", "regle": "C5", "ligne": 9, "garantie": "heuristique", "voie": "tri"}, {"empreinte": "330b74b8e06b009f:0", "regle": "C5", "ligne": 25, "garantie": "heuristique", "voie": "tri"}, {"empreinte": "1a57b5bb4eceae72:0", "regle": "C5", "ligne": 54, "garantie": "heuristique", "voie": "tri"}, {"empreinte": "3a34c62ed83f04b4:0", "regle": "C5", "ligne": 58, "garantie": "heuristique", "voie": "tri"}, {"empreinte": "bc21edab6785e934:0", "regle": "C5", "ligne": 73, "garantie": "heuristique", "voie": "tri"}, {"empreinte": "5e39baff846e914a:0", "regle": "C5", "ligne": 99, "garantie": "heuristique", "voie": "tri"}, {"empreinte": "78d1c682a5ae32cf:0", "regle": "C5", "ligne": 104, "garantie": "heuristique", "voie": "tri"}]} -->
+
+## Plan
+
+- [x] Lire l'issue #19 et son bloc JSON (8 trouvailles C5)
+- [x] Retrouver chaque trouvaille par empreinte (ocots-lint verifier)
+- [x] Relire le fichier autour de chaque trouvaille
+- [x] Trancher (confirmée / faux positif / exception légitime)
+- [x] Modifier l'issue #19 (corps réécrit + label conventions-style)
+- [x] Rédiger le bilan
+
+## Journal
+
+- 2026-10-03T05:36:03Z — chantier initialisé (issue #19, branche, PR Draft)
+- 2026-10-03 — les 8 empreintes C5 sont toutes présentes et actives ; aucune n'est exemptée.
+- 2026-10-03 — greps : les 8 labels (chap:suites, sec:convergence, thm:unicite, sec:operations, thm:operations, prop:inverse, sec:monotones, def:croissante) ne sont cités nulle part dans le cours (`\ref`/`\cref`). Seuls def:convergence, prop:bornee, thm:monotone sont effectivement référencés.
+- 2026-10-03 — verdict : les 8 trouvailles C5 sont confirmées (labels posés « au cas où », jamais cités) → issue transformée en constat vérifié, pas d'exemption.
+
+## Bilan
+
+- **Trouvailles reçues** : 8 (toutes C5, garantie « heuristique », voie « tri »).
+- **Confirmées : 8** (chap:suites, sec:convergence, thm:unicite, sec:operations, thm:operations, prop:inverse, sec:monotones, def:croissante). Vérifié au `grep` sur tout `*.tex` : aucun de ces labels n'est cité par `\ref`/`\cref`/`\autoref` ; seuls def:convergence, prop:bornee, thm:monotone sont réellement référencés dans `suites.tex` (l. 45, 66, 125).
+- **Rejetées / exemptées : 0** — aucune fausse positive, aucune exception légitime (C5 n'en prévoit pas pour les labels posés « au cas où »).
+- **Disparues : 0** — les 8 empreintes de l'issue sont toutes actives à l'identique (numéros de ligne inchangés).
+- **Motif dominant** : labels posés sans jamais être cités, contrairement à `communes.md#c5`.
+- **En plus du signal brut** : rien — le signal rendait déjà compte de toutes les infractions C5 du fichier.
+
+**Issue #19** : au moins un point confirmé → corps réécrit (8 points confirmés + bloc JSON réduit aux entrées confirmées, champs inchangés), label `conventions-candidate` retiré, `conventions-style` ajouté, laissée **ouverte** pour le rôle de correction. Aucune exemption posée (rien de rejeté). Aucun fichier du dépôt modifié ; l'exemption P5 préexistante (l. 81) n'a pas été touchée.
+
+**Reste à vérifier à la main** : après la suppression des labels par le rôle de correction, recompilation du poly pour s'assurer d'aucun `??` (les références restantes def:convergence, prop:bornee, thm:monotone devront être conservées).
+
+- 2026-10-03T05:36:57Z — run terminé (https://github.com/ocourses/ocots-demo/actions/runs/37100215957)
