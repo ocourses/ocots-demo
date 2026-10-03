@@ -94,3 +94,5 @@ n'aggrave rien. `ocots-lint verifier C5` sur `suites.tex` : **0 infraction**.
 
 **Restes à vérifier à la main** : rien de particulier ; la relecture humaine
 de la PR confirmant le rendu du pilote.
+
+- 2026-10-03T05:41:02Z — run terminé (https://github.com/ocourses/ocots-demo/actions/runs/37100426951)
