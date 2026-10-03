@@ -49,15 +49,48 @@ _Détecté par `ocots-lint synchroniser`._
 - [x] Retirer `label{prop:inverse}` (l.73, C5)
 - [x] Retirer `label{sec:monotones}` (l.99, C5)
 - [x] Retirer `label{def:croissante}` (l.104, C5)
-- [x] Vérifier `git diff` (seuls les 8 labelless retirés) + verifier C5 sur `suites.tex`
-- [ ] Recompiler en fin de run, restaurer tout PDF suivi, rédiger le bilan
+- [x] Vérifier `git diff` (seuls les 8 labels retirés) + verifier C5 sur `suites.tex`
+- [x] Recompiler en fin de run, restaurer tout PDF suivi, rédiger le bilan
 
 ## Journal
 
 - 2026-10-03T05:39:10Z — chantier initialisé (issue #19, branche, PR Draft)
 - 2026-10-03 — étape 0 : `latex-compile suites.tex` échoue (« Undefined control sequence \chapter », fichier fragment non pilote, comportement attendu hors chaîne)
 - 2026-10-03 — les 8 labels confirmés retirés ; `ocots-lint verifier C5` repasse à 0 infraction(s)
+- 2026-10-03 — pilote `poly/main.tex` compilé en fin de run : OK ; `git status` propre
 
 ## Bilan
 
-_À rédiger par l'agent en fin de run._
+Issue #19, fichier `poly/mainmatter/suites.tex` — 8 points C5 confirmés, tous corrigés.
+
+Règle `ocots-conventions` C5 (`communes.md`, « Ne poser un label que si
+l'objet est cité ») : les 8 labels jamais référencés dans le cours ont été
+retirés. Retrouvés par empreinte via `ocots-lint verifier --format json`
+(lignes 2, 9, 25, 54, 58, 73, 99, 104), cohérentes avec le bloc JSON de
+l'issue.
+
+| Règle | Label retiré | Emplacement |
+|---|---|---|
+| C5 | `label{chap:suites}` | l.2 (chapitre) |
+| C5 | `label{sec:convergence}` | l.9 (section) |
+| C5 | `label{thm:unicite}` | l.25 (option `label=` du theorem) |
+| C5 | `label{sec:operations}` | l.54 (section) |
+| C5 | `label{thm:operations}` | l.58 (option `label=` du theorem) |
+| C5 | `label{prop:inverse}` | l.73 (option `label=` de la proposition) |
+| C5 | `label{sec:monotones}` | l.99 (section) |
+| C5 | `label{def:croissante}` | l.104 (option `label=` de la définition) |
+
+Aucun point laissé de côté ni devenu plus applicable. Les labels
+`def:convergence`, `prop:bornee`, `thm:monotone` restent cités dans le
+fichier et ne figuraient pas dans l'issue : non touchés.
+
+**Compilation** : `latex-compile suites.tex` seul échoue avant ce travail
+(« Undefined control sequence », `l.1 \chapter`) — fichier fragment
+non pilotable isolément, raison étrangère à l'issue. Vérification de
+substitution : le pilote `poly/main.tex` compile **OK** après les retraits
+(les labels supprimés n'étaient référencés nulle part), donc le diff
+n'aggrave rien. `ocots-lint verifier C5` sur `suites.tex` : **0 infraction**.
+`git status` propre (aucun PDF suivi modifié par la compilation).
+
+**Restes à vérifier à la main** : rien de particulier ; la relecture humaine
+de la PR confirmant le rendu du pilote.
