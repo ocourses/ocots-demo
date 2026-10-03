@@ -33,12 +33,31 @@ _Détecté par `ocots-lint synchroniser`._
 
 ## Plan
 
-_À rédiger par l'agent : liste d'étapes cochables._
+- [x] Lire l'issue #20 et son bloc JSON (empreintes, règles, garanties)
+- [x] Retrouver chaque trouvaille par empreinte dans le fichier actuel
+- [x] Relire le fichier, vérifier les renvois réels des trois labels
+- [x] Décider confirmée / faux positif / exception légitime pour chacune
+- [x] Consigner les rejets par `ocots-lint exempter` (si rejet)
+- [x] Modifier l'issue #20 (corps/bloc JSON/labels) selon le verdict
+- [x] Rédiger le bilan
 
 ## Journal
 
 - 2026-10-03T05:43:03Z — chantier initialisé (issue #20, branche, PR Draft)
+- 2026-10-03 — relecture du fichier : 3 labels d'exercice (`ex:definition`, `ex:oscillante`, `ex:recurrente`) posés mais jamais renvoyés. `grep` sur tout le dépôt : aucune citation.
+- 2026-10-03 — verdict : 3/3 confirmés (C5). Corps de l'issue réécrit (points confirmés + bloc JSON réduit), labels passés sur `conventions-style`, issue laissée ouverte.
 
 ## Bilan
 
-_À rédiger par l'agent en fin de run._
+Trouvailles reçues : 3 (C5, heuristique, voie tri).
+
+- **Confirmées : 3** — `ex:definition` (l.19), `ex:oscillante` (l.24), `ex:recurrente` (l.36). Trois labels d'exercice posés mais jamais renvoyés nulle part dans le cours (`grep -rn` sur tous les `.tex` : aucune citation). Infraction directe à C5 « Ne poser un label que si l'objet est cité » (communes.md). Le préfixe `ex:` est conforme, seul le renvoi manque.
+- **Rejetées : 0** — aucune exemption posée (aucun rejet).
+- **Disparues : 0** — les trois empreintes de l'issue correspondent aux trouvailles actuelles, aucune n'a bougé.
+
+Motif du triage : labels orphelins posés « au cas où », exactement le cas que C5 interdit.
+
+Issue #20 : corps réécrit avec les trois points confirmés (règle, ligne actuelle, justification) suivi du bloc `<!-- ocots-lint … -->` réduit aux trois entrées confirmées (champs inchangés) ; label `conventions-candidate` → `conventions-style` ; issue laissée **ouverte** pour le rôle de correction. Aucune modification du contenu du dépôt (pas même d'exemption).
+
+Rien d'autre remarqué en relisant (pas de règle non outillée pertinente).
+
