@@ -64,3 +64,5 @@ Vérifications :
 - `git status` propre : seuls `td/td1/td1.tex` et `.agents/runs/…md` modifiés, aucun PDF rendu committé touché par la compilation.
 
 À vérifier à la main : rien de particulier au-delà d'une relecture PR (modification purement mécanique sur des labels morts, sans impact de fond ni de rendu).
+
+- 2026-10-04T06:03:00Z — run terminé (https://github.com/ocourses/ocots-demo/actions/runs/37181505043)
