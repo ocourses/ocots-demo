@@ -35,12 +35,32 @@ _Détecté par `ocots-lint synchroniser`._
 
 ## Plan
 
-_À rédiger par l'agent : liste d'étapes cochables._
+- [x] Étape 0 : `latex-compile` en l'état (référence)
+- [x] Point 1 (l19) — C5 : retirer `[label=ex:definition]` (jamais cité)
+- [x] Point 2 (l24) — C5 : retirer `[label=ex:oscillante]` (jamais cité)
+- [x] Point 3 (l36) — C5 : retirer `[label=ex:recurrente]` (jamais cité)
+- [x] Vérifier `ocots-lint verifier` (empreintes disparues) + `latex-compile`
+- [x] Rédiger le bilan, committer
 
 ## Journal
 
 - 2026-10-04T06:02:06Z — chantier initialisé (issue #20, branche, PR Draft)
+- 2026-10-04 — étape 0 OK (`td1.pdf` produit hors dépôt) ; les trois empreintes confirmées correspondent aux lignes 19/24/36 actuelles
+- 2026-10-04 — les trois labels C5 retirés ; `ocots-lint verifier` passe à 0 infraction C5 ; `latex-compile` OK ; `git status` propre (seuls td1.tex et le fichier de suivi modifiés)
 
 ## Bilan
 
-_À rédiger par l'agent en fin de run._
+Issue #20 — trois points C5 confirmés sur `td/td1/td1.tex`, tous corrigés :
+
+- **l19 `ex:definition`** — corrigé : retiré `[label=ex:definition]` de `\begin{exercise}` (`ex:` est bien le préfixe conforme, mais le label n'était jamais cité → C5 l'ordonne de le retirer).
+- **l24 `ex:oscillante`** — corrigé : retiré `[label=ex:oscillante]`.
+- **l36 `ex:recurrente`** — corrigé : retiré `[label=ex:recurrente]`.
+
+Remède appliqué tel que documenté dans `conventions/communes.md#c5` (« Ne poser un label que si l'objet est cité ») : `grep` sur tout le cours ne retournait aucune citation de ces trois clés, pas de choix d'auteur à trancher ici (retrait mécanique).
+
+Vérifications :
+- `conventions/bin/ocots-lint verifier --format json td/td1/td1.tex` → `C5 : 0 infraction(s)`, `trouvailles` vide (les trois empreintes du bloc JSON de l'issue ont disparu).
+- `latex-compile td/td1/td1.tex` → OK avant et après ; le document compile toujours.
+- `git status` propre : seuls `td/td1/td1.tex` et `.agents/runs/…md` modifiés, aucun PDF rendu committé touché par la compilation.
+
+À vérifier à la main : rien de particulier au-delà d'une relecture PR (modification purement mécanique sur des labels morts, sans impact de fond ni de rendu).
