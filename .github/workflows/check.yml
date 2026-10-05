@@ -8,7 +8,7 @@ name: Check — conventions
 
 on:
   schedule:
-    - cron: "13 6 * * 1" # tous les lundis ~6h UTC (décalé, cf. ocourses/agents/queue.yml)
+    - cron: "13 2 * * 4" # tous les jeudis ~2h UTC (décalé, cf. ocourses/agents/queue.yml)
   workflow_dispatch: {}
 
 permissions:
